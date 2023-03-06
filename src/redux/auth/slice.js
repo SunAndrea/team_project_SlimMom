@@ -12,7 +12,9 @@ const initialState = {
   isLoggedIn: false,
   isFetchingCurrent: false,
 };
-
+const allet = () => {
+  window.alert('registration done');
+};
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -22,7 +24,8 @@ const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
       state.sessionId = action.payload.sid;
-      state.isLoggedIn = true;
+      // state.isLoggedIn = true;
+      window.alert('registration done');
     },
     [login.fulfilled](state, action) {
       state.user = action.payload.user;

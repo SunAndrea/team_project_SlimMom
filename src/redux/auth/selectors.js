@@ -13,3 +13,5 @@ export const selectRefreshToken = state => state.auth.refreshToken;
 export const selectAccessToken = state => state.auth.accessToken;
 
 export const selectAccessProducts = state => state.auth.randomProducts;
+
+export const selectNotAllowedProducts = state => state.auth.user.userData.notAllowedProducts;

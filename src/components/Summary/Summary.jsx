@@ -1,19 +1,24 @@
 import { useSelector } from 'react-redux';
+import { useAuth } from 'hooks';
 import { dayInfo, selectDay } from 'redux/day-endpoints/selectors';
 import { FoodList } from 'components/FoodList/FoodList';
 import { Box, Typography } from '@mui/material';
 
 export const Summary = () => {
-  const { kcalConsumed, kcalLeft, dailyRate, percentsOfDailyRate } = useSelector(dayInfo);
+  // const { kcalConsumed, kcalLeft, dailyRate, percentsOfDailyRate } = useSelector(dayInfo);
   const day = useSelector(selectDay);
+  const { user } = useAuth();
+  const data = user.userData;
+  const { kcalConsumed, kcalLeft, dailyRate, percentsOfDailyRate } = data;
 
+  console.log(data);
   const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
   let date = new Date().toLocaleDateString('uk-UA', options).split('.').join('/');
 
   if (day) {
     date = day.date.split('-').reverse().join('/');
   }
-
+  console.log(kcalConsumed);
   const summery = {
     kcalConsumed: kcalConsumed ? Math.round(kcalConsumed) : '000',
     kcalLeft: kcalLeft ? Math.round(kcalLeft) : '000',

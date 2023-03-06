@@ -10,7 +10,7 @@ import { setDate } from 'redux/day-endpoints/slice';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { Box, Stack } from '@mui/material';
 import { InputCalendar } from './Calendar.styled';
-
+import { selectNotAllowedProducts } from 'redux/auth/selectors';
 const today = new Date();
 const formattedDate = today.toISOString().slice(0, 10);
 
@@ -19,9 +19,9 @@ export const Calendar = () => {
   const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
+  const notAllowedProductsState = useSelector(selectNotAllowedProducts);
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!isLoggedIn || notAllowedProductsState.length < 1) {
       return;
     }
 
@@ -30,7 +30,7 @@ export const Calendar = () => {
     dispatch(setDate(requestInfo));
 
     dispatch(getDayInfo(requestInfo));
-  }, [dispatch, isLoggedIn]);
+  }, [dispatch, isLoggedIn, notAllowedProductsState]);
 
   const onChange = newValue => {
     setDateValue(newValue.format('YYYY-MM-DD'));

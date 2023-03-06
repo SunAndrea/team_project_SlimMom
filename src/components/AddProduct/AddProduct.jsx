@@ -7,6 +7,7 @@ import { productSearch } from 'redux/productSearch/operation';
 import { selectProduct } from 'redux/productSearch/selection';
 import { addEatenProduct } from 'redux/day-endpoints/operation';
 import { selectDay } from 'redux/day-endpoints/selectors';
+import { selectNotAllowedProducts } from 'redux/auth/selectors';
 
 export const AddProduct = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ export const AddProduct = () => {
   const day = useSelector(selectDay);
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
+  const notAllowedProductsState = useSelector(selectNotAllowedProducts);
 
   let initialValues = {
     name: '',
@@ -38,6 +40,9 @@ export const AddProduct = () => {
   };
 
   const onChange = evt => {
+    if (notAllowedProductsState.length < 1) {
+      window.alert('Please, count your daily rate first');
+    }
     dispatch(productSearch(evt.target.value));
   };
 

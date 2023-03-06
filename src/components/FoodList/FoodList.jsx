@@ -13,11 +13,11 @@ export const FoodList = memo(() => {
 
   const notAllowedProductsList = isLoggedIn ? randomProductsAuthState : randomProductsState;
 
-  let notAllowedProductsState = useSelector(notAllowedProducts);
-  if (isLoggedIn) {
-    // eslint-disable-next-line no-unused-vars
-    notAllowedProductsState = user.userData.notAllowedProducts;
-  }
+  // let notAllowedProductsState = useSelector(notAllowedProducts);
+  // if (isLoggedIn) {
+  //   // eslint-disable-next-line no-unused-vars
+  //   notAllowedProductsState = user.userData.notAllowedProducts;
+  // }
 
   return (
     <Typography variant="ol" component="ol">
