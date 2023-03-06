@@ -23,11 +23,17 @@ const dayEndpointsSlice = createSlice({
     setDeleteProductId: (state, action) => {
       state.deleteProductId = action.payload;
     },
+    setDaySummary: (state, action) => {
+      state.daySummary = { ...action.payload.daySummary };
+    },
   },
   extraReducers: {
     [addEatenProduct.fulfilled](state, action) {
+      console.log(`action.payload`, action.payload.day.id);
+
       state.eatenProducts.push(action.payload.eatenProduct);
       state.daySummary = { ...action.payload.daySummary };
+      state.date.id = action.payload.day.id;
     },
     [getDayInfo.fulfilled](state, action) {
       if (!action.payload.eatenProducts) {
@@ -48,6 +54,6 @@ const dayEndpointsSlice = createSlice({
   },
 });
 
-export const { setDate, setDeleteProductId } = dayEndpointsSlice.actions;
+export const { setDate, setDeleteProductId, setDaySummary } = dayEndpointsSlice.actions;
 
 export const dayEndpointsReducer = dayEndpointsSlice.reducer;

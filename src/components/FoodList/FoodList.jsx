@@ -21,13 +21,17 @@ export const FoodList = memo(() => {
 
   return (
     <Typography variant="ol" component="ol">
-      {notAllowedProductsList.map((item, index) => {
-        return (
-          <Typography key={index} variant="li" component="li">
-            {item}
-          </Typography>
-        );
-      })}
+      {notAllowedProductsList.includes(null) || notAllowedProductsList.includes(undefined) ? (
+        <></>
+      ) : (
+        notAllowedProductsList.map((item, index) => {
+          return (
+            <Typography key={index} variant="li" component="li">
+              {item}
+            </Typography>
+          );
+        })
+      )}
     </Typography>
   );
 });

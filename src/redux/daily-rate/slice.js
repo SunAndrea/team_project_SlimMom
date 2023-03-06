@@ -19,7 +19,7 @@ const dailySlice = createSlice({
       state.notAllowedProducts = notAllowedProducts;
 
       for (let index = 4; index > state.randomProducts.length; index - 1) {
-        state.randomProducts.push(notAllowedProducts[getRandomElement(notAllowedProducts.length - 1)]);
+        state.randomProducts.push(state.notAllowedProducts[getRandomElement(notAllowedProducts.length - 1)]);
       }
     },
   },

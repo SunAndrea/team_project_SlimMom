@@ -12,9 +12,7 @@ const initialState = {
   isLoggedIn: false,
   isFetchingCurrent: false,
 };
-const allet = () => {
-  window.alert('registration done');
-};
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
