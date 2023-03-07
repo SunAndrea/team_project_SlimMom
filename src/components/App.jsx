@@ -32,9 +32,9 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<CalculatorPage />} />
-            <Route path="/register" element={<RestrictedRoute component={RegisterPage} redirectTo="/diary" />} />
-            <Route path="/login" element={<RestrictedRoute component={LoginPage} redirectTo="/diary" />} />
-            <Route path="/diary" element={<PrivateRoute component={DiaryPage} redirectTo="/login" />} />
+            <Route path="register" element={<RestrictedRoute component={RegisterPage} redirectTo="diary" />} />
+            <Route path="login" element={<RestrictedRoute component={LoginPage} redirectTo="diary" />} />
+            <Route path="diary" element={<PrivateRoute component={DiaryPage} redirectTo="login" />} />
           </Route>
           <Route element={<ErrorPage />} path="*" />
         </Routes>
