@@ -1,13 +1,13 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { notAllowedProducts, randomProducts } from 'redux/daily-rate/selection';
+import { randomProducts } from 'redux/daily-rate/selection';
 import { selectAccessProducts } from 'redux/auth/selectors';
 
 import { useAuth } from 'hooks/useAuth';
 import { Typography } from '@mui/material';
 
 export const FoodList = memo(() => {
-  const { user, isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
   const randomProductsState = useSelector(randomProducts);
   const randomProductsAuthState = useSelector(selectAccessProducts);
 

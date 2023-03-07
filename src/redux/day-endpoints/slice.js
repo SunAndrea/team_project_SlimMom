@@ -29,8 +29,6 @@ const dayEndpointsSlice = createSlice({
   },
   extraReducers: {
     [addEatenProduct.fulfilled](state, action) {
-      console.log(`action.payload`, action.payload.day.id);
-
       state.eatenProducts.push(action.payload.eatenProduct);
       state.daySummary = { ...action.payload.daySummary };
       state.date.id = action.payload.day.id;

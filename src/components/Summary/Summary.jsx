@@ -5,9 +5,11 @@ import { FoodList } from 'components/FoodList/FoodList';
 import { Box, Typography } from '@mui/material';
 
 export const Summary = () => {
-  const { kcalConsumed, kcalLeft, dailyRate, percentsOfDailyRate } = useSelector(dayInfo);
+  const { kcalConsumed, kcalLeft, percentsOfDailyRate } = useSelector(dayInfo);
   const day = useSelector(selectDay);
   const { user } = useAuth();
+  const dailyRate = user.userData.dailyRate;
+
   // const data = user.userData;
   // const { kcalConsumed, kcalLeft, dailyRate, percentsOfDailyRate } = data;
 
@@ -19,10 +21,10 @@ export const Summary = () => {
     date = day.date.split('-').reverse().join('/');
   }
   const summery = {
-    kcalConsumed: kcalConsumed ? Math.round(kcalConsumed) : '000',
-    kcalLeft: kcalLeft ? Math.round(kcalLeft) : '000',
-    dailyRate: dailyRate ? Math.round(dailyRate) : '000',
-    percentsOfDailyRate: percentsOfDailyRate ? `${Math.round(percentsOfDailyRate)}%` : '000 kcal',
+    kcalConsumed: kcalConsumed ? Math.round(kcalConsumed) : '0',
+    kcalLeft: kcalLeft ? Math.round(kcalLeft) : Math.round(dailyRate),
+    dailyRate: dailyRate ? Math.round(dailyRate) : '0',
+    percentsOfDailyRate: percentsOfDailyRate ? `${Math.round(percentsOfDailyRate)}%` : '0%',
     date,
   };
 

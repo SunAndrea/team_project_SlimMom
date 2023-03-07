@@ -5,7 +5,6 @@ import { useAuth } from 'hooks';
 import { fetchDaily, fetchDailyRateByUserId } from 'redux/daily-rate/operation';
 import { dailyRate } from 'redux/daily-rate/selection';
 import { getDayInfo } from 'redux/day-endpoints/operation';
-import { setDaySummary } from 'redux/day-endpoints/slice';
 import { Recommendation } from 'components/Recommendation/Recommendation';
 import { BackgroundSummery } from '../Background/BackgroundSummery/BackgroundSummery';
 import {
@@ -30,7 +29,7 @@ const initialValues = {
 
 export const CalculateForm = () => {
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState(initialValues);
+  const [formData] = useState(initialValues);
 
   const { isLoggedIn, user } = useAuth();
 
