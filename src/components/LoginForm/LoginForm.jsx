@@ -17,8 +17,8 @@ const initialValues = {
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (evt, values, { resetForm }) => {
-    evt.preventDefault();
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
     dispatch(login(values));
 
     resetForm();
